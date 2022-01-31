@@ -4,7 +4,7 @@
       <input type="text" class="car-field" v-model="carData.name" />
 
     <div class="car-item">
-      <select id="car" name="carSelect" v-model="carData.doors">
+      <select id="car" name="carSelect" v-model.number="carData.doors">
         <option value="2">2 doors</option>
         <option value="3">3 doors</option>
         <option value="4">4 doors</option>
@@ -37,5 +37,8 @@ export default class Car extends Vue {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+.car-item{
+  margin: 10px;
+  padding: 10px;
+}
 </style>
