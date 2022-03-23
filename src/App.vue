@@ -2,7 +2,11 @@
   <div id="app">
     <button @click="addNewCar">New Car</button>
     <div class="car-cpm">
-      <Car v-for="car in cars" :key="car.name" :carData="car"> </Car>
+      <Car
+       v-for="car in cars" 
+       :key="car.name" 
+       :carData="car"
+       ></Car>
       <!-- <div>{{cars[0].color}}</div> -->
     </div>
     <Rating></Rating>
@@ -23,13 +27,24 @@ import CarData from "./logic/CarData";
 })
 export default class App extends Vue {
   //-------------------------------------------------------------------
-  cars: CarData[] = [];
+  
+  get cars(): CarData[] {
+    return this.$store.getters.cars;  // i can sent the car array directly to the Veux
+  }
 
   addNewCar() {
     const newCar = new CarData(5, "red", "new car");
-    this.cars.push(newCar);
+    //this.cars.push(newCar);
+    //this.$store.state.cars.push(newCar);  // this case only if you know you didnt mack any change on data and you will save it derectly
+    this.$store.commit("addCar",newCar);  // some time you need to mack some change in the data before save it. so you must sent them to the mutation
+
   }
   //---------------------------------------------------------------------
+  
+
+
+
+
 }
 </script>
 

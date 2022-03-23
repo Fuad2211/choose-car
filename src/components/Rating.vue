@@ -2,29 +2,28 @@
   <div >
    <ul>
      <li :style="{background: ratingData.color}">
-       <button @click="giveRating">Poor</button></li>
+       <button type="button" @click="giveRating">Poor</button></li>
    </ul>
-
-    
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
-import RatingData from "@/logic/RatingData"
+import RatingData from "@/logic/RatingData";
 
 
 @Component
 export default class Rating extends Vue {  
-  @Prop() ratingData!: RatingData;
+  @Prop({required:true}) ratingData!: RatingData;
 
-  colors: string[] = ["blue", "green"];
+  colors: string[] = ["blue", "green"]; 
   colorIndex = 0;
 
  giveRating(){
-   this.colorIndex = (this.colorIndex +1) % (this.colors.length);
+   this.colorIndex = (this.colorIndex +1)  % this.colors.length;
    this.ratingData.color = this.colors[this.colorIndex]
  }
+
   
 }
 </script>

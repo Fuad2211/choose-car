@@ -4,11 +4,10 @@ export default class RatingData{
     great: number;
     color: string;
 
-    constructor(p:number, a:number, g:number, b:string){
+    constructor(p:number, a:number, g:number, c:string){
         this.poor = p;
         this.average = a;
         this.great = g;
-        this.color=b;
+        this.color=c;
     }
-
 }

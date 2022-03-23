@@ -1,24 +1,24 @@
 <template>
   <div class="car-container" :style="{ background: carData.color }">
    
-      <input type="text" class="car-field" v-model="carData.name" />
+    <input type="text" class="car-field" v-model="carData.name" />
 
     <div class="car-item">
-      <select id="car" name="carSelect" v-model.number="carData.doors">
+      <select id="car" name="carSelect" v-model="carData.doors">
         <option value="2">2 doors</option>
         <option value="3">3 doors</option>
         <option value="4">4 doors</option>
         <option value="5">5 doors</option>
       </select>
-    </div>
+    </div> 
     <button type="button"  @click="changeColor" class="carData-color">Change color</button>
-
   </div>
 </template>
 
-<script lang="ts">
+<script lang="ts"> 
 import { Component, Prop, Vue } from "vue-property-decorator";
 import CarData from "@/logic/CarData";
+
 
 @Component
 export default class Car extends Vue {  
@@ -26,12 +26,16 @@ export default class Car extends Vue {
 
   colors: string[] = ["red", "blue", "green", "black"];
   colorIndex = 0;
+  private _: any;
 
  
   changeColor() {
     this.colorIndex = (this.colorIndex + 1) % this.colors.length;
     this.carData.color = this.colors[this.colorIndex];
   }
+     
+
+
 }
 </script>
 
@@ -42,3 +46,6 @@ export default class Car extends Vue {
   padding: 10px;
 }
 </style>
+
+
+
